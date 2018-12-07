@@ -144,7 +144,7 @@ client.on('message', message => {
  
   message.channel.createInvite({
         thing: true,
-        maxUses: 5,
+        maxUses: 100,
         maxAge: 86400
     }).then(invite =>
       message.author.sendMessage(invite.url)
@@ -161,7 +161,7 @@ client.on('message', message => {
 ---------------------
 -[${message.guild.name}]  هذا هو رابط سيرفر
 ---------------------
--هذا الرابط صالح ل 5 مستخدم فقط
+-هذا الرابط صالح ل 100 مستخدم فقط
 ---------------------
 -هذا الرابط صالح لمده 24 ساعه فقط
 ---------------------
@@ -355,6 +355,30 @@ Dat = currentTime.getDate()
  
   });
 
+client.on('message', message => {
+    if (message.content.startsWith(".avatar")) {
+        if (message.author.bot) return
+        var mentionned = message.mentions.users.first();
+    var omar;
+      if(mentionned){
+          var omar = mentionned;
+      } else {
+          var omar = message.author;
+          
+      }
+        const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor('Avatar Link :')
+        .setTitle('Click Here')
+        .setURL(`${omar.avatarURL}`)
+        .setImage(`${omar.avatarURL}`)
+        .setFooter('name bot',client.user.avatarURL) 
+      message.channel.sendEmbed(embed);
+    }
+});
+
+
+
 const devs = ["394949560327208960","295909228328255488"]; //الايدي حقك
 const adminprefix = ["."]; // البرفكس
 client.on('message', message => {
@@ -389,57 +413,7 @@ if (message.content.startsWith(adminprefix + 'setavatar')) {
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
 });
-
-
-client.on('message', message => {
-    if (message.content.startsWith(".avatar")) {
-        if (message.author.bot) return
-        var mentionned = message.mentions.users.first();
-    var omar;
-      if(mentionned){
-          var omar = mentionned;
-      } else {
-          var omar = message.author;
-          
-      }
-        const embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setAuthor('Avatar Link :')
-        .setTitle('Click Here')
-        .setURL(`${omar.avatarURL}`)
-        .setImage(`${omar.avatarURL}`)
-        .setFooter('name bot',client.user.avatarURL) 
-      message.channel.sendEmbed(embed);
-    }
-});
-
-
-
-const adminprefix = ".";
-const devs = ['383711936174620672','481213742109949972','480738319899295795'];
-client.on('message', message => {
-  var argresult = message.content.split(` `).slice(1).join(' ');
-    if (!devs.includes(message.author.id)) return;
-    
-if (message.content.startsWith(adminprefix + 'ply')) {
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
-} else
-  if (message.content.startsWith(adminprefix + 'avatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else     
-if (message.content.startsWith(adminprefix + 'st')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
-}
-});
-
+ client.login(process.env.BOT_TOKEN); 
 
 
 client.on("message", message => {
@@ -449,8 +423,8 @@ client.on("message", message => {
       .setColor("RANDOM")
       .setDescription(`
      
-           اختار لغتك | Please Select Your Language
-${prefix}help-ar 
+             Please Select Your Language
+${prefix}help-ar
 ${prefix}help-en
              
       `)
@@ -471,6 +445,7 @@ ${prefix}help-en
 
 .help-ad-ar  ⇏ اوامر ادارة السيرفر
              
+.help-mu-ar  ⇏ اوامر الموسيقى
 `)
 message.channel.sendEmbed(embed)
  
@@ -489,6 +464,7 @@ client.on("message", message => {
    
    .help-ad-en  ⇏ Server management commands
                
+   .help-mu-en  ⇏ Music commands
    
    
    `)
@@ -506,8 +482,6 @@ client.on("message", message => {
       .setDescription(`
              
 ===================== اوامر عامة =====================
-.new ➾ لفتح تكت 
-.close ➾ لاغلاق التكت
 .id  ➾ معلومات عن حسابك
 .avatar ➾ يظهر صورة بروفابلك
 .server ➾ معلومات عن السيرفر
@@ -518,6 +492,7 @@ client.on("message", message => {
 =========================================================
 وقريباً المزيد من الاكواد
 =========================================================
+Support server : https://discord.gg/xTK8jku
 `)
    message.author.sendEmbed(embed)
    
@@ -537,8 +512,6 @@ client.on("message", message => {
       .setDescription(`
              
 ==================== General commands =====================
-.new ➾ open ticket
-.close ➾ close ticket
 .id ➾ your informations
 .ping ➾ your ping
 .avatar ➾ your profile avatar
@@ -549,6 +522,7 @@ client.on("message", message => {
 =========================================================
 More commands soon
 =========================================================
+Support server : https://discord.gg/xTK8jku
 `)
    message.author.sendEmbed(embed)
    
@@ -564,6 +538,7 @@ More commands soon
       .setDescription(`
              
 ==================== اوامر ادارية =====================
+.bc ➾ لارسال رساله لجميع الاعضاء
 .ban [@mention] [reason] ➾  لحظر شخص من السيرفر
 .kick [@mention] [reason] ➾ لطرد شخص من السيرفر
 .mute  [@mention] [reason] ➾ لاعطاء ميوت لعضو
@@ -577,6 +552,7 @@ More commands soon
 =========================================================
 وقريباً المزيد من الاكواد
 =========================================================
+Support server :  https://discord.gg/xTK8jku
 `)
    message.author.sendEmbed(embed)
    
@@ -592,6 +568,7 @@ const embed = new Discord.RichEmbed()
    .setDescription(`
          
 ==================== Management commands =====================
+.bc ➾ for massage send message to server members
 .ban [@mention] [reason] ➾ to ban someone from the server
 .kick [@mention] [reason] ➾ to kick someone from the server
 .mute [@mention] [reason] ➾ to mute someone
@@ -605,6 +582,7 @@ const embed = new Discord.RichEmbed()
 =========================================================
 More commands soon
 =========================================================
+Support server : https://discord.gg/xTK8jku
 `)
 message.author.sendEmbed(embed)
  
@@ -612,7 +590,58 @@ message.author.sendEmbed(embed)
 });
  
  
-
+client.on("message", message => {
+    var prefix = ".";
+ if (message.content === ".help-mu-ar") {
+     message.channel.send('**تم ارسال رسالة بالخاص** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setDescription(`
+             
+==================== اوامر الميوزك =====================
+1play ➾ لتشغيل اغنية
+1skip ➾ لتخطي اغنية
+1resume ➾ لتشغيل الاغننية
+1vol ➾ لتغير مستوى الصوت 0 - 100
+1stop ➾ لاخراج البوت من الروم
+1np ➾ لمعرفة الاغنية مشغلة
+1queue ➾ قائمة الاغاني
+=========================================================
+وقريباً المزيد من الاكواد
+=========================================================
+Support server : https://discord.gg/xTK8jku
+`)
+   message.author.sendEmbed(embed)
+   
+}
+});
+ 
+ 
+client.on("message", message => {
+    var prefix = ".";
+ if (message.content === ".help-mu-en") {
+     message.channel.send('**Check your dm** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setDescription(`
+             
+==================== Music commands =====================
+1play ➾ to play song
+1skip ➾ to skip song
+1vol ➾ to change the volume 0 - 100
+1stop ➾ top remove the bot from room
+1np ➾ to show the song that is currently playing
+1queue ➾ to see the song list
+ 
+=========================================================
+More codes soon
+=========================================================
+Support server : https://discord.gg/xTK8jku
+`)
+   message.author.sendEmbed(embed)
+   
+}
+});
 
 
 client.on('message', message => {
@@ -1011,7 +1040,7 @@ client.on("message", async message => {
         let textchannels = guild.channels.filter(e => e.type === "text")
         let voicechannels = guild.channels.filter(e => e.type === "voice")
           var embed = new Discord.RichEmbed()
-          .setColor("#FFBF00")
+          .setColor("#000000")
           .setTitle(`معلومات عن السيرفر`)
           .setDescription(`معلومات عن : ${guild.name}`)
           .addField("صاحب السيرفر :", `${guild.owner}`, true)
@@ -1031,106 +1060,6 @@ client.on("message", async message => {
  
       }
     });
-
-
-
-
-
-
-
-client.on("message", (message) => {
-    /// DREAM
-   if (message.content.startsWith(".new")) {     /// DREAM
-        const reason = message.content.split(" ").slice(1).join(" ");     /// DREAM
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`لازم تسوي رتبة اسمها \`Support Team\` وتنطي البوت ادمنيتر حتا يقدر يسوي الرومات ويعدل برمشنات`);
-        if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
-        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
-            let role = message.guild.roles.find("name", "Support Team");
-            let role2 = message.guild.roles.find("name", "@everyone");
-            c.overwritePermissions(role, {
-                SEND_MESSAGES: true,
-                READ_MESSAGES: true
-            });    /// ALPHA CODES
-            c.overwritePermissions(role2, {
-                SEND_MESSAGES: false,
-                READ_MESSAGES: false
-            });
-            c.overwritePermissions(message.author, {
-                SEND_MESSAGES: true,
-                READ_MESSAGES: true
-            });
-            message.channel.send(`:white_check_mark: تم انشاء تذكرتك, #${c.name}.`);
-            const embed = new Discord.RichEmbed()
-                .setColor(0xCF40FA)
-                .addField(`Hey ${message.author.username}!`, `تم فتح تذكرة الرجاء انتظار الى حين يأتي مشرف ويقوم بلرد عليك`)
-                .setTimestamp();
-            c.send({
-                embed: embed
-            });
-        }).catch(console.error);
-    }
- 
- 
-  if (message.content.startsWith(".close")) {
-        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
- 
-       message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب .confirm`)
-           .then((m) => {
-               message.channel.awaitMessages(response => response.content === '.confirm', {
-                       max: 1,
-                       time: 10000,
-                       errors: ['time'],
-                   })    /// DREAM
-                   .then((collected) => {
-                       message.channel.delete();
-                   })    /// DREAM
-                   .catch(() => {
-                       m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
-                           m2.delete();
-                       }, 3000);
-                   });
-           });
-   }
- 
-});
-
-
-
-
-
-client.on('message', message => {
-    let args = message.content.split(' ').slice(1).join(' ');
-    if (message.content.startsWith('.bc')){ // البريفكس والامر
-    if(!message.author.id === '') return;
-    message.channel.sendMessage('جار ارسال الرسالة :white_check_mark:')
-    client.users.forEach(m =>{
-    m.sendMessage(args)
-    })
-    }
-    });
-
-
-
-  
-
-
-
-client.on('message', message => {
-    let args = message.content.split(' ').slice(1).join(' ');
-    if (message.content.startsWith('.bc')){
-    if(!message.author.id === '') return;
-    message.channel.sendMessage('جار ارسال الرسالة :white_check_mark:')
-    client.users.forEach(m =>{
-    m.sendMessage(args)
-    })
-    }
-    });
-	
-
-
-
-
-
 
 
 client.login(process.env.BOT_TOKEN);
