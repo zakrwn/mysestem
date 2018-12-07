@@ -392,7 +392,7 @@ if (message.content.startsWith(adminprefix + 'setavatar')) {
   client.user.setAvatar(argresult);
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
-});
+
 
 
 client.on("message", message => {
