@@ -468,7 +468,7 @@ client.on("message", message => {
 .trg ➾ لعبة ترجمه
 .say ➾
 =========================================================
-وقريباً المزيد من الاكواد
+
 =========================================================
 `)
    message.author.sendEmbed(embed)
@@ -482,7 +482,7 @@ client.on("message", message => {
  
    client.on("message", message => {
     var prefix = ".";
- if (message.content === ".help") {
+ if (message.content === ".hفلاثفelp") {
      message.channel.send('**Check your dm** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
@@ -499,7 +499,7 @@ client.on("message", message => {
 .trg ➾ traduction game
 .say ➾ the bot say your message
 =========================================================
-More commands soon
+
 =========================================================
 `)
    message.author.sendEmbed(embed)
@@ -510,7 +510,6 @@ More commands soon
    client.on("message", message => {
     var prefix = ".";
  if (message.content === ".help") {
-     message.channel.send('**تم ارسال رسالة بالخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setDescription(`
