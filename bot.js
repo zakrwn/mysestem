@@ -11,7 +11,7 @@ client.on('message', message => {
  
   let args = message.content.split(" ").slice(1);
  
-  if (command == "ban") {
+  if (command == "باند") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
   if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
@@ -42,7 +42,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-if (message.content.startsWith(".kick")) {
+if (message.content.startsWith(".طرد")) {
     var mention = message.mentions.members.first();
     if(!mention) return message.channel.send("يجب منشن العضو");
 
@@ -100,7 +100,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "clear") {
+    if(command === "مسح") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
