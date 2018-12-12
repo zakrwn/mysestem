@@ -499,7 +499,6 @@ client.on("message", message => {
 .trg ➾ traduction game
 .say ➾ the bot say your message
 =========================================================
-
 =========================================================
 `)
    message.author.sendEmbed(embed)
@@ -526,7 +525,6 @@ client.on("message", message => {
 .clear  ➾ لمسح الشات
 .role [@mention] [role name] ➾ لاعطاء رتبة لعضو
 =========================================================
-وقريباً المزيد من الاكواد
 =========================================================
 `)
    message.author.sendEmbed(embed)
