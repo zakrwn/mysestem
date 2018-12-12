@@ -65,7 +65,7 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', message => {
 
-    if (message.content === ".اقفال الشات") {
+    if (message.content === ".قفل الشات") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
