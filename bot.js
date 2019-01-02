@@ -1068,7 +1068,7 @@ client.on("message", message => {
 
 
 
-const prefix = "!"; //NotMiro //BadGuY
+const prefix = "."; //NotMiro //BadGuY
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
