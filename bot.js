@@ -1066,6 +1066,24 @@ client.on("message", message => {
 
 
 
+client.on('message', message => { //@! Falsteni - آدم#8655 
+    if(message.content == '.member') { //@! Falsteni - آدم#8655 
+    const embed = new Discord.RichEmbed() //@! Falsteni - آدم#8655 
+    .setDescription(`**Members infoðŸ”‹
+:green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size} //@! Falsteni - آدم#8655 
+:heart:dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size} //@! Falsteni - آدم#8655 
+:yellow_heart: idle:      ${message.guild.members.filter(m=>m.presence.status == 'idle').size}    //@! Falsteni - آدم#8655 
+:black_heart: offline:   ${message.guild.members.filter(m=>m.presence.status == 'offline').size}  //@! Falsteni - آدم#8655 
+:blue_heart:   all:  ${message.guild.memberCount}**`)         //@! Falsteni - آدم#8655 
+         message.channel.send({embed}); //@! Falsteni - آدم#8655 
+
+    }
+  });
+
+
+
+
+
 
 client.on('ready', () => {
    console.log(`----------------`);
