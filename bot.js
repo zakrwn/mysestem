@@ -1068,11 +1068,7 @@ client.on("message", message => {
 
 
 
-const prefix = "."; //NotMiro //BadGuY
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
+    var prefix = ".";
 client.on('message', message => {
   let command = message.content.split(" ")[0].slice(prefix.length);
   let args = message.content.split(" ").slice(1);
