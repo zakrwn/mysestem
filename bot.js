@@ -1051,8 +1051,8 @@ client.on("message", (message) => {
 
 
 client.on("message", message => {
-
-            if (message.content.startsWith(prefix + "bc")) {
+   var prefix = ".";
+            if (message.content.startsWith(prefix + "bc2")) {
                          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
