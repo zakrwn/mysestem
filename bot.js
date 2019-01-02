@@ -1047,6 +1047,28 @@ client.on("message", (message) => {
 
 
 
+
+
+
+client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {//حقوق دايموند كودز
+ m.send(`${argresult}\n `);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
+});
+
+
+
+
+
+
 client.on('message', message => {
     let args = message.content.split(' ').slice(1).join(' ');
     if (message.content.startsWith('.bc')){ // البريفكس والامر
