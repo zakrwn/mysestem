@@ -1068,8 +1068,9 @@ client.on("message", message => {
 
 
 
-    var prefix = ".";
+
 client.on('message', message => {
+     var prefix = ".";
   let command = message.content.split(" ")[0].slice(prefix.length);
   let args = message.content.split(" ").slice(1);
 
@@ -1087,7 +1088,7 @@ client.on('message', message => {
       message.delete()
       message.channel.send(`**يرجي كتابة اقتراح لكي يتم ارساله الي روم الاقتراحات ❎ **`);
     });
-  }
+
 });
 
 
